@@ -1,5 +1,8 @@
 package christmas;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  *  * <애피타이저>
  *  * 양송이수프(6,000), 타파스(5,500), 시저샐러드(8,000)
@@ -25,6 +28,92 @@ public class MenuRepository {
     private final String[] dessertMenuName = {"초코 케이크", "아이스크림"};
     private final Integer[] dessertMenuPrice = {15000, 5000};
 
-    private final String[] beverageName = {"제로콜라", "레드와인", "삼페인"};
-    private final Integer[] beveragePrice = {3000, 60000, 25000};
+    private final String[] beverageMenuName = {"제로콜라", "레드와인", "삼페인"};
+    private final Integer[] beverageMenuPrice = {3000, 60000, 25000};
+
+    private final Map<String, Integer> appetizerMenu = new HashMap<>();
+
+    private final Map<String, Integer> mainMenu = new HashMap<>();
+
+    private final Map<String, Integer> dessertMenu = new HashMap<>();
+
+    private final Map<String, Integer> beverageMenu = new HashMap<>();
+
+    public void setMenu() {
+        setAppetizerMenu();
+        setMainMenu();
+        setDessertMenu();
+        setBeverageMenu();
+    }
+
+    private void setAppetizerMenu() {
+        checkLength(appetizerMenuName, appetizerMenuPrice);
+
+        for (int i = 0; i < appetizerMenuName.length; i++) {
+            appetizerMenu.put(appetizerMenuName[i], appetizerMenuPrice[i]);
+        }
+    }
+
+    private void setMainMenu() {
+        checkLength(mainMenuName, mainMenuPrice);
+
+        for (int i = 0; i < mainMenuName.length; i++) {
+            mainMenu.put(mainMenuName[i], mainMenuPrice[i]);
+        }
+    }
+
+    private void setDessertMenu() {
+        checkLength(dessertMenuName, dessertMenuPrice);
+
+        for (int i = 0; i < dessertMenuName.length; i++) {
+            dessertMenu.put(dessertMenuName[i], dessertMenuPrice[i]);
+        }
+    }
+
+    private void setBeverageMenu() {
+        checkLength(beverageMenuName, beverageMenuPrice);
+
+        for (int i = 0; i < beverageMenuPrice.length; i++) {
+            beverageMenu.put(beverageMenuName[i], beverageMenuPrice[i]);
+        }
+    }
+
+    private void checkLength(String[] strName, Integer[] price) {
+        if (strName.length != price.length) {
+            throw new IllegalStateException("메뉴 갯수가 달라요 확인 부탁드립니다.");
+        }
+    }
+
+    public Map<String, Integer> getAppetizerMenu() {
+        return appetizerMenu;
+    }
+
+    public Map<String, Integer> getMainMenu() {
+        return mainMenu;
+    }
+
+    public Map<String, Integer> getDessertMenu() {
+        return dessertMenu;
+    }
+
+    public Map<String, Integer> getBeverageMenu() {
+        return beverageMenu;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
